@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="@string/description_1"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="@string/description_2"
         android:textColor="#FFFDFD"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_1" />
@@ -59,20 +59,28 @@
         android:layout_height="wrap_content"
         android:text="@string/description_3"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description_2" />
 
     <Button
         android:id="@+id/button_microphone"
-        android:layout_width="209dp"
-        android:layout_height="78dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:background="@drawable/bg_grad_button"
+        android:elevation="100dp"
+        android:padding="40dp"
         android:text="@string/complete_connect"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_3" />
+        app:layout_constraintTop_toBottomOf="@+id/description_3"
+        app:layout_constraintVertical_bias="0.0"
+        android:stateListAnimator="@drawable/button_state_list_anim_material_original"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

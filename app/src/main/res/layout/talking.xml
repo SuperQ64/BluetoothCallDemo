@@ -34,12 +34,13 @@
         android:id="@+id/talking_description"
         android:layout_width="276dp"
         android:layout_height="66dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="52dp"
         android:text="@string/enjoy_talking"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topsubTitle3" />
 
@@ -51,15 +52,17 @@
         android:background="@drawable/button_round"
         android:rotation="135"
         android:src="@drawable/phone32"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/talking_name" />
+        app:layout_constraintTop_toBottomOf="@+id/talking_name"
+        app:layout_constraintVertical_bias="0.135" />
 
     <ImageView
         android:id="@+id/talking_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_round_human"
         android:src="@drawable/human"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,8 +74,9 @@
         android:id="@+id/talking_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="@string/connecting"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"

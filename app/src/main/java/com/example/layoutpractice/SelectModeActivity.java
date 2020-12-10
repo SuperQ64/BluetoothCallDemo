@@ -1,16 +1,16 @@
 package com.example.layoutpractice;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -34,9 +34,12 @@ public class SelectModeActivity extends Activity implements Runnable{
         setContentView(R.layout.select_mode);
         bc = new BluetoothConnect();
         listView = findViewById(R.id.name_list);
-        List<String> names = bc.getNames();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,names);
+        TextView textView = findViewById(R.id.question);
+        List<Phone> phones = bc.getPhones();
+        ArrayAdapter<Phone> adapter = new ArrayAdapter<Phone>(this, R.layout.name_list_text,phones);
+        //BaseAdapter adapter = new PhoneAdapter(this.getApplicationContext(),R.layout.name_list,bc.getPhone());
         listView.setAdapter(adapter);
+
 //        LinearLayout linearLayout = findViewById(R.id.button_linear);
 //        TranslateAnimation translateAnimation = new TranslateAnimation(0,0,0,-linearLayout.getHeight()*2);
 //        translateAnimation.setDuration(500);
@@ -59,6 +62,7 @@ public class SelectModeActivity extends Activity implements Runnable{
         for(Button b : buttons){
             b.setOnClickListener(view -> {
                 removeButtons(b);
+                textView.setText(R.string.ad_hoc_question);
                 listView.setVisibility(View.VISIBLE);
                 listView.startAnimation(feedIn_am);
 //                progressDialog.show();
@@ -68,7 +72,12 @@ public class SelectModeActivity extends Activity implements Runnable{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                bc.setTalkingName(((TextView)view).getText().toString());
+                String[] str = ((TextView)view).getText().toString().split("　　");
+                for(String s : str){
+                    Log.d(TAG,"Array: " + s);
+                }
+                bc.setTalkingName(str[1]);
+
                 Intent intent = new Intent(SelectModeActivity.this,TalkingActivity.class);
                 intent.putExtra("TALKING",bc.getTalkingName());
                 startActivity(intent);
