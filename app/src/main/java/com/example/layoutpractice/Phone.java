@@ -5,10 +5,16 @@ import androidx.annotation.NonNull;
 public class Phone implements PhoneState{
     private final String NAME;
     private int state;
+    private int icon;
 
     public Phone(String NAME,int state){
+        this(NAME,state,R.drawable.human);
+    }
+
+    public Phone(String NAME,int state,int icon){
         this.NAME = NAME;
         this.state = state;
+        this.icon = icon;
     }
 
     public String getNAME() {
@@ -17,6 +23,10 @@ public class Phone implements PhoneState{
 
     public int getState() {
         return state;
+    }
+
+    public int getIcon() {
+        return icon;
     }
 
     @NonNull

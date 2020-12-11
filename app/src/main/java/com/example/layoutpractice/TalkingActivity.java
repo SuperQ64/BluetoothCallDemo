@@ -28,7 +28,9 @@ public class TalkingActivity extends Activity {
         talking_Image.startAnimation(feedIn_am);
         Intent intent = getIntent();
         String name = intent.getStringExtra("TALKING");
+        int iconId = intent.getIntExtra("ICON",R.drawable.human);
         TextView nameText = findViewById(R.id.talking_name);
+        talking_Image.setImageResource(iconId);
 
 
         new CountDownTimer(3000,1000){

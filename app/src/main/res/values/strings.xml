@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">SILENT - talking</string>
-    <string name="app_sub_name">from Jaxtaphony Project</string>
-    <string name="description_1">スロートマイクに接続して</string>
+    <string name="app_sub_name">from Juxtaphony Project</string>
+    <string name="description_1">スロートマイクに接続して\n首にはめて\n下のボタンをタップしてください</string>
     <string name="description_2">首にはめて</string>
     <string name="description_3">下のボタンをタップしてください</string>
     <string name="complete_connect">Complete Connect!</string>
     <string name="select_mode">どのモードで通話しますか</string>
-    <string name="button_ad_hoc">アドホック　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　1対1</string>
-    <string name="button_party">パーティー　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　複数人</string>
-    <string name="button_table_talk">テーブルトーク　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　同じテーブルにいる人</string>
-    <string name="button_class_room">クラスルーム　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　講義や授業</string>
+    <string name="button_ad_hoc">アドホック\n1対1</string>
+    <string name="button_party">パーティー\n複数人</string>
+    <string name="button_table_talk">テーブルトーク\nテーブルにいる人</string>
+    <string name="button_class_room">クラスルーム\n講義や授業</string>
     <string name="ad_hoc_question">誰と通話しますか</string>
-    <string name="enjoy_talking">通話を「ささやき声」で　　　　　　　　　　　　　　　　　　　　　　　　　　　　　楽しもう</string>
+    <string name="enjoy_talking">通話を「ささやき声」で\n楽しもう</string>
     <string name="connecting">接続中・・・</string>
 </resources>

@@ -1,28 +1,31 @@
 package com.example.layoutpractice;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BluetoothConnect {
     //List<String> names;
     List<Phone> phones;
+    Map<String,Phone> phoneMap;
     Phone[] phone;
     private String talkingName;
     //private PhoneState ps;
     public BluetoothConnect(){
         phones = new ArrayList<>();
+        phoneMap = new HashMap<>();
 
-
-        phones.add(makePhone("たつや",PhoneState.ONLINE));
-        phones.add(makePhone("みか",PhoneState.OFFLINE));
-        phones.add(makePhone("あきのり",PhoneState.OFFLINE));
-        phones.add(makePhone("あきほ",PhoneState.OFFLINE));
-        phones.add(makePhone("たけひろ",PhoneState.ONLINE));
-        phones.add(makePhone("たかよし",PhoneState.ONLINE));
-        phones.add(makePhone("かなえ",PhoneState.OFFLINE));
-        phones.add(makePhone("そら",PhoneState.ONLINE));
-        phones.add(makePhone("まさひと",PhoneState.ONLINE));
-        phones.add(makePhone("まさお",PhoneState.OFFLINE));
+        makePhone("たつや",PhoneState.ONLINE,R.mipmap.otake_icon_round);
+        makePhone("みか",PhoneState.OFFLINE);
+        makePhone("あきのり",PhoneState.OFFLINE);
+        makePhone("あきほ",PhoneState.OFFLINE);
+        makePhone("たけひろ",PhoneState.ONLINE,R.mipmap.icon2_round);
+        makePhone("たかよし",PhoneState.ONLINE);
+        makePhone("かなえ",PhoneState.OFFLINE);
+        makePhone("そら",PhoneState.ONLINE);
+        makePhone("まさひと",PhoneState.ONLINE);
+        makePhone("まさお",PhoneState.OFFLINE);
 
         phone = new Phone[phones.size()];
         makeArrayPhone();
@@ -30,8 +33,13 @@ public class BluetoothConnect {
         talkingName = "非通知";
     }
 
-    private Phone makePhone(String NAME,int state){
-        return new Phone(NAME,state);
+    private void makePhone(String NAME,int state){
+        this.makePhone(NAME,state,R.drawable.human);
+    }
+    private void makePhone(String NAME,int state,int icon){
+        Phone p = new Phone(NAME,state,icon);
+        phones.add(p);
+        phoneMap.put(NAME,p);
     }
 
     private void makeArrayPhone(){
@@ -54,6 +62,10 @@ public class BluetoothConnect {
 
     public List<Phone> getPhones() {
         return phones;
+    }
+
+    public Map<String, Phone> getPhoneMap() {
+        return phoneMap;
     }
 
     public String getTalkingName() {

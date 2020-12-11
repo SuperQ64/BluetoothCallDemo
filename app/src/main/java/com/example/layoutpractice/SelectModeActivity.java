@@ -5,9 +5,11 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -20,6 +22,8 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class SelectModeActivity extends Activity implements Runnable{
     static final String TAG = "SELECT_MODE_ACTIVITY";
@@ -45,7 +49,9 @@ public class SelectModeActivity extends Activity implements Runnable{
 //        translateAnimation.setDuration(500);
 //        translateAnimation.setFillAfter(true);
         AlphaAnimation feedIn_am = new AlphaAnimation(0,1);
+        TranslateAnimation slideIn_am = new TranslateAnimation(0,0,0,this.findViewById(R.id.select_constrain).getHeight() * 10);
         feedIn_am.setDuration(500);
+        slideIn_am.setDuration(1000);
         //ProgressDialog--------->
 //        progressDialog = new ProgressDialog(this);
 //        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -60,29 +66,32 @@ public class SelectModeActivity extends Activity implements Runnable{
         buttons.add(findViewById(R.id.table_button));
         buttons.add(findViewById(R.id.class_button));
         for(Button b : buttons){
+            String[] str = String.valueOf(b.getText()).split("\n");
+            String text = "<b>"+str[0]+"</b><br>"+str[1];
+            b.setText(Html.fromHtml(text));
             b.setOnClickListener(view -> {
                 removeButtons(b);
                 textView.setText(R.string.ad_hoc_question);
                 listView.setVisibility(View.VISIBLE);
                 listView.startAnimation(feedIn_am);
+//                listView.startAnimation(slideIn_am);
 //                progressDialog.show();
 //                thread.start();
             });
         }
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String[] str = ((TextView)view).getText().toString().split("　　");
-                for(String s : str){
-                    Log.d(TAG,"Array: " + s);
-                }
-                bc.setTalkingName(str[1]);
-
-                Intent intent = new Intent(SelectModeActivity.this,TalkingActivity.class);
-                intent.putExtra("TALKING",bc.getTalkingName());
-                startActivity(intent);
-                Log.d(TAG,bc.getTalkingName());
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            String[] str = ((TextView)view).getText().toString().split("　　");
+            Map<String,Phone> map = bc.getPhoneMap();
+            for(String s : str){
+                Log.d(TAG,"Array: " + s);
             }
+            bc.setTalkingName(str[1]);
+
+            Intent intent = new Intent(SelectModeActivity.this,TalkingActivity.class);
+            intent.putExtra("TALKING",bc.getTalkingName());
+            intent.putExtra("ICON", Objects.requireNonNull(map.get(str[1])).getIcon());
+            startActivity(intent);
+            Log.d(TAG,bc.getTalkingName());
         });
 
     }
