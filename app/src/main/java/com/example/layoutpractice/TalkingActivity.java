@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 public class TalkingActivity extends Activity {
-    static final String TAG = "TALKING_ACTIVITY";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,9 +37,7 @@ public class TalkingActivity extends Activity {
 
         new CountDownTimer(2500,1000){
             @Override
-            public void onTick(long l) {
-
-            }
+            public void onTick(long l) {}
 
             @Override
             public void onFinish() {
