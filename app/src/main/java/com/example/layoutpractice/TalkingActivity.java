@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 public class TalkingActivity extends Activity {
-    static final String TAG = "TALKING_ACTIVITY";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,9 +34,7 @@ public class TalkingActivity extends Activity {
 
         new CountDownTimer(3000,1000){
             @Override
-            public void onTick(long l) {
-
-            }
+            public void onTick(long l) {}
 
             @Override
             public void onFinish() {
@@ -46,8 +43,6 @@ public class TalkingActivity extends Activity {
                 nameText.startAnimation(feedIn_name);
             }
         }.start();
-        call_end_button.setOnClickListener(view -> {
-            startActivity(new Intent(this,SelectModeActivity.class));
-        });
+        call_end_button.setOnClickListener(view -> startActivity(new Intent(this,SelectModeActivity.class)));
     }
 }

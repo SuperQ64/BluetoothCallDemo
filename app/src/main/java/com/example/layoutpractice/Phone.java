@@ -3,7 +3,7 @@ package com.example.layoutpractice;
 import androidx.annotation.NonNull;
 
 public class Phone implements PhoneState{
-    private final String NAME;
+    private String NAME;
     private int state;
     private int icon;
 
