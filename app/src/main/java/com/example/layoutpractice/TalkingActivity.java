@@ -2,6 +2,8 @@ package com.example.layoutpractice;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.animation.AlphaAnimation;
@@ -25,6 +27,7 @@ public class TalkingActivity extends Activity {
         feedIn_am.setDuration(800);
         feedIn_name.setDuration(250);
         talking_Image.setColorFilter(0xaaff0000);
+        talking_Image.setColorFilter(Color.argb(80,255,0,0));
         talking_Image.startAnimation(feedIn_am);
         Intent intent = getIntent();
         String name = intent.getStringExtra("TALKING");
@@ -33,7 +36,7 @@ public class TalkingActivity extends Activity {
         talking_Image.setImageResource(iconId);
 
 
-        new CountDownTimer(3000,1000){
+        new CountDownTimer(2500,1000){
             @Override
             public void onTick(long l) {
 
@@ -46,8 +49,6 @@ public class TalkingActivity extends Activity {
                 nameText.startAnimation(feedIn_name);
             }
         }.start();
-        call_end_button.setOnClickListener(view -> {
-            startActivity(new Intent(this,SelectModeActivity.class));
-        });
+        call_end_button.setOnClickListener(view -> startActivity(new Intent(this,SelectModeActivity.class)));
     }
 }

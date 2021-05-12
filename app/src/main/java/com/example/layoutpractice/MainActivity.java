@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        new CountDownTimer(2000,100) {
+        new CountDownTimer(5000,100) {
             @Override
             public void onTick(long l) {
 
@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 startActivity(new Intent(MainActivity.this,MicrophoneConnectActivity.class));
-                //setContentView(R.layout.microphone_connect);
             }
         }.start();
 
